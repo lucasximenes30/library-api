@@ -2,20 +2,16 @@ package io.github.lucasximenes30.libraryapi.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 
 @Entity
-@Table(name = "autor", schema = "public")
-@Getter
-@Setter
-@AllArgsConstructor
+@Table(name = "autor")
+@Data
 @NoArgsConstructor
 public class Autor {
 
@@ -29,5 +25,7 @@ public class Autor {
     private LocalDate dataNascimento;
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
+    @OneToMany(mappedBy = "autor")
+    private List<Livro> livros;
 
 }
