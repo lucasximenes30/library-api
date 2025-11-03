@@ -4,6 +4,7 @@ package io.github.lucasximenes30.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Table(name = "livro")
 @Data
 @NoArgsConstructor
+@ToString(exclude = "autor")
 public class Livro {
 
     @Id

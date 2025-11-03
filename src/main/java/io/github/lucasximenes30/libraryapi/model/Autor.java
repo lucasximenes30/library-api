@@ -19,14 +19,17 @@ public class Autor {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
+
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
+
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
-    //@OneToMany(mappedBy = "autor")
-    @Transient
+
+    @OneToMany(mappedBy = "autor")
     private List<Livro> livros;
 
 }
