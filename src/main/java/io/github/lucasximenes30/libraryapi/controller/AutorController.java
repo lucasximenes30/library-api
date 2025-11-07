@@ -2,6 +2,7 @@ package io.github.lucasximenes30.libraryapi.controller;
 
 
 import io.github.lucasximenes30.libraryapi.dto.AutorDTO;
+import io.github.lucasximenes30.libraryapi.dto.ErroResposta;
 import io.github.lucasximenes30.libraryapi.model.Autor;
 import io.github.lucasximenes30.libraryapi.service.AutorService;
 import org.springframework.http.ResponseEntity;
