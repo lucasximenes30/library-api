@@ -21,6 +21,13 @@ public class AutorService {
         return repository.save(autor);
     }
 
+    public void atualziar(Autor autor){
+        if(autor.getId() == null){
+            throw new IllegalArgumentException("O ID do autor não pode ser nulo para atualização.");
+        }
+         repository.save(autor);
+    }
+
     public Optional<Autor> obterPorId(UUID id){
         return repository.findById(id);
     }
