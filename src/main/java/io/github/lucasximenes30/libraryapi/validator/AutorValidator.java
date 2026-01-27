@@ -1,5 +1,4 @@
 package io.github.lucasximenes30.libraryapi.validator;
-
 import io.github.lucasximenes30.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.lucasximenes30.libraryapi.model.Autor;
 import io.github.lucasximenes30.libraryapi.repository.AutorRepository;
@@ -9,7 +8,6 @@ import java.util.Optional;
 
 @Component
 public class AutorValidator {
-
 
     private AutorRepository repository;
 
@@ -23,16 +21,21 @@ public class AutorValidator {
         }
     }
 
-    private boolean existeAutorCadastrado(Autor autor){
-        Optional<Autor> autorEncontrado = repository.findByNomeAndDataNascimentoAndNacionalidade(
-                autor.getNome(),
-                autor.getDataNascimento(),
-                autor.getNacionalidade()
-        );
-        if(autor.getId() == null){
-            return  autorEncontrado.isPresent();
+    private boolean existeAutorCadastrado(Autor autor) {
+        Optional<Autor> autorEncontrado =
+                repository.findByNomeAndDataNascimentoAndNacionalidade(
+                        autor.getNome(),
+                        autor.getDataNascimento(),
+                        autor.getNacionalidade()
+                );
+
+        if (autor.getId() == null) {
+            return autorEncontrado.isPresent();
         }
 
-        return autor.getId().equals(autorEncontrado.get().getId()) & autorEncontrado.isPresent();
+        return autorEncontrado
+                .map(a -> !a.getId().equals(autor.getId()))
+                .orElse(false);
     }
+
 }

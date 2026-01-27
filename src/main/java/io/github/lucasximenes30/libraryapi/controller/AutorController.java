@@ -3,6 +3,7 @@ package io.github.lucasximenes30.libraryapi.controller;
 
 import io.github.lucasximenes30.libraryapi.dto.AutorDTO;
 import io.github.lucasximenes30.libraryapi.dto.ErroResposta;
+import io.github.lucasximenes30.libraryapi.exceptions.OperacaoNaoPermetidaException;
 import io.github.lucasximenes30.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.lucasximenes30.libraryapi.model.Autor;
 import io.github.lucasximenes30.libraryapi.service.AutorService;
@@ -30,8 +31,6 @@ public class AutorController {
     @PostMapping
     public ResponseEntity<Object> salvar(@RequestBody AutorDTO autor){
         try {
-
-
         var autorEntidade = autor.mapearParaAutor();
         service.salvar(autorEntidade);
 
@@ -66,7 +65,9 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable String id){
+    public ResponseEntity<Object> deletar(@PathVariable String id){
+        try {
+
 
         var idAutor = UUID.fromString(id);
         Optional<Autor> autorOptional = service.obterPorId(idAutor);
@@ -78,6 +79,10 @@ public class AutorController {
         service.deletar(autorOptional.get());
 
         return ResponseEntity.noContent().build();
+    } catch (OperacaoNaoPermetidaException e) {
+            var erroResposta = ErroResposta.respostaPadrao(e.getMessage());
+            return ResponseEntity.status(erroResposta.status()).body(erroResposta);
+        }
     }
 
     @GetMapping
@@ -98,24 +103,26 @@ public class AutorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@PathVariable("id") String id, @RequestBody AutorDTO dto){
+    public ResponseEntity<Object> atualizar(@PathVariable("id") String id, @RequestBody AutorDTO dto){
+        try {
+            var idAutor = UUID.fromString(id);
+            Optional<Autor> autorOptional = service.obterPorId(idAutor);
 
-        var idAutor = UUID.fromString(id);
-        Optional<Autor> autorOptional = service.obterPorId(idAutor);
+            if (autorOptional.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
 
-        if(autorOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
+            var autor = autorOptional.get();
+            autor.setNome(dto.nome());
+            autor.setNacionalidade(dto.nacionalidade());
+            autor.setDataNascimento(dto.dataNascimento());
+
+            service.atualziar(autor);
+
+            return ResponseEntity.noContent().build();
+        } catch (RegistroDuplicadoException e) {
+            var erroDTO = ErroResposta.conflito(e.getMessage());
+            return ResponseEntity.status(erroDTO.status()).body(erroDTO);
         }
-
-        var autor = autorOptional.get();
-        autor.setNome(dto.nome());
-        autor.setNacionalidade(dto.nacionalidade());
-        autor.setDataNascimento(dto.dataNascimento());
-
-        service.atualziar(autor);
-
-        return ResponseEntity.noContent().build();
     }
-
-
 }

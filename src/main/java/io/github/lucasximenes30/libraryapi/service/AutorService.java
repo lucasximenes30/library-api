@@ -1,7 +1,9 @@
 package io.github.lucasximenes30.libraryapi.service;
 
+import io.github.lucasximenes30.libraryapi.exceptions.OperacaoNaoPermetidaException;
 import io.github.lucasximenes30.libraryapi.model.Autor;
 import io.github.lucasximenes30.libraryapi.repository.AutorRepository;
+import io.github.lucasximenes30.libraryapi.repository.LivroRepository;
 import io.github.lucasximenes30.libraryapi.validator.AutorValidator;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +16,12 @@ public class AutorService {
 
     private final AutorRepository repository;
     private final AutorValidator validator;
+    private final LivroRepository livroRepository;
 
-    public AutorService(AutorRepository repository, AutorValidator validator) {
+    public AutorService(AutorRepository repository, AutorValidator validator, LivroRepository livroRepository) {
         this.validator = validator;
         this.repository = repository;
+        this.livroRepository = livroRepository;
     }
 
     public Autor salvar(Autor autor){
@@ -29,7 +33,8 @@ public class AutorService {
         if(autor.getId() == null){
             throw new IllegalArgumentException("O ID do autor não pode ser nulo para atualização.");
         }
-         repository.save(autor);
+            validator.validar(autor);
+            repository.save(autor);
     }
 
     public Optional<Autor> obterPorId(UUID id){
@@ -37,7 +42,11 @@ public class AutorService {
     }
 
     public void deletar(Autor autor){
+        if (possuiLivro(autor)){
+            throw new OperacaoNaoPermetidaException("Não é permetido excluir o autor que possui livros cadastrados!");
+        }
         repository.delete(autor);
+
     }
 
     public List<Autor> pesquisa(String nome, String nacionalidade){
@@ -54,5 +63,9 @@ public class AutorService {
         }
 
         return repository.findAll();
+    }
+
+    public boolean possuiLivro(Autor autor){
+        return livroRepository.existsByAutor(autor);
     }
 }
