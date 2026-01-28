@@ -1,12 +1,12 @@
 package io.github.lucasximenes30.libraryapi.controller;
 
-
 import io.github.lucasximenes30.libraryapi.dto.AutorDTO;
 import io.github.lucasximenes30.libraryapi.dto.ErroResposta;
 import io.github.lucasximenes30.libraryapi.exceptions.OperacaoNaoPermetidaException;
 import io.github.lucasximenes30.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.lucasximenes30.libraryapi.model.Autor;
 import io.github.lucasximenes30.libraryapi.service.AutorService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -29,7 +29,7 @@ public class AutorController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autor){
+    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO autor){
         try {
         var autorEntidade = autor.mapearParaAutor();
         service.salvar(autorEntidade);
