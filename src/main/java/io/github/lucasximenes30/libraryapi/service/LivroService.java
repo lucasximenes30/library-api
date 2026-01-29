@@ -1,6 +1,7 @@
 package io.github.lucasximenes30.libraryapi.service;
 
 
+import io.github.lucasximenes30.libraryapi.model.Livro;
 import io.github.lucasximenes30.libraryapi.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,4 +11,8 @@ import org.springframework.stereotype.Service;
 public class LivroService {
 
     private final LivroRepository livroRepository;
+
+    public Livro salvar(Livro livro) {
+        return livroRepository.save(livro);
+    }
 }

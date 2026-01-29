@@ -2,6 +2,8 @@
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/AutorController.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/LivroController.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/common/GlobalExceptionHandler.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/mappers/AutorMapper.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/mappers/LivroMapper.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/AutorDTO.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/CadastriLivroDTO.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/ErroCampo.java
