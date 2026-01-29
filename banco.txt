@@ -11,7 +11,7 @@ CREATE TABLE autor(
 
 CREATE TABLE livro(
 	id UUID not null primary key,
-	isbn varchar(20) not null,
+	isbn varchar(20) not null unique,
 	titulo varchar(150) not null,
 	data_publicacao date not null,
 	genero varchar(30) not null,

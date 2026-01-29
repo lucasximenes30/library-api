@@ -1,0 +1,15 @@
+package io.github.lucasximenes30.libraryapi.dto;
+
+import io.github.lucasximenes30.libraryapi.model.GeneroLivro;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.UUID;
+
+public record CadastriLivroDTO(String isbn,
+                               String titulo,
+                               LocalDate dataPublicacao,
+                               GeneroLivro genero,
+                               BigDecimal preco,
+                               UUID idAutor) {
+}
