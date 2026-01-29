@@ -1,1 +1,3 @@
-io\github\lucasximenes30\libraryapi\LibraryapiApplicationTests.class
+io/github/lucasximenes30/libraryapi/LibraryapiApplicationTests.class
+io/github/lucasximenes30/libraryapi/repository/LivroRepositoryTest.class
+io/github/lucasximenes30/libraryapi/repository/AutorRepositoryTest.class

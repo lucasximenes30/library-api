@@ -1,2 +1,19 @@
-C:\Users\Rodrigo Souza\IdeaProjects\library-api\src\main\java\io\github\lucasximenes30\libraryapi\LibraryapiApplication.java
-C:\Users\Rodrigo Souza\IdeaProjects\library-api\src\main\java\io\github\lucasximenes30\libraryapi\model\Autor.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/LibraryapiApplication.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/AutorController.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/LivroController.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/common/GlobalExceptionHandler.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/AutorDTO.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/CadastriLivroDTO.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/ErroCampo.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/ErroResposta.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/dto/ResultadoPesquisaLivroDTO.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/exceptions/OperacaoNaoPermetidaException.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/exceptions/RegistroDuplicadoException.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/model/Autor.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/model/GeneroLivro.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/model/Livro.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/repository/AutorRepository.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/repository/LivroRepository.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/service/AutorService.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/service/LivroService.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/validator/AutorValidator.java
