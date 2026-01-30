@@ -1,5 +1,6 @@
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/LibraryapiApplication.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/AutorController.java
+/var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/GenericController.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/LivroController.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/common/GlobalExceptionHandler.java
 /var/home/lucasximenes/IdeaProjects/library-api/src/main/java/io/github/lucasximenes30/libraryapi/controller/mappers/AutorMapper.java
