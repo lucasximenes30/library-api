@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static io.github.lucasximenes30.libraryapi.repository.specs.LivroSpecs.nomeAutorLike;
+
 @Service
 @RequiredArgsConstructor
 public class LivroService {
@@ -39,24 +41,26 @@ public class LivroService {
             Integer anoPublicacao
     ) {
 
-        Specification<Livro> specs = null;
+        Specification<Livro> specs = Specification.where(null);
 
         if (isbn != null) {
-            specs = specs == null
-                    ? LivroSpecs.isbnEqual(isbn)
-                    : specs.and(LivroSpecs.isbnEqual(isbn));
+            specs = specs.and(LivroSpecs.isbnEqual(isbn));
         }
 
         if (titulo != null) {
-            specs = specs == null
-                    ? LivroSpecs.tituloLike(titulo)
-                    : specs.and(LivroSpecs.tituloLike(titulo));
+            specs = specs.and(LivroSpecs.tituloLike(titulo));
         }
 
         if (genero != null) {
-            specs = specs == null
-                    ? LivroSpecs.generoEquals(genero)
-                    : specs.and(LivroSpecs.generoEquals(genero));
+            specs = specs.and(LivroSpecs.generoEquals(genero));
+        }
+
+        if (anoPublicacao != null) {
+            specs = specs.and(LivroSpecs.anoPublicacaoEqual(anoPublicacao));
+        }
+
+        if (nomeAutor != null) {
+            specs = specs.and(LivroSpecs.nomeAutorLike(nomeAutor));
         }
 
         return livroRepository.findAll(specs);
