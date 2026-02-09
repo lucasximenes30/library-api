@@ -5,6 +5,7 @@ import io.github.lucasximenes30.libraryapi.model.GeneroLivro;
 import io.github.lucasximenes30.libraryapi.model.Livro;
 import io.github.lucasximenes30.libraryapi.repository.LivroRepository;
 import io.github.lucasximenes30.libraryapi.repository.specs.LivroSpecs;
+import io.github.lucasximenes30.libraryapi.validator.LivroValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,10 @@ import static io.github.lucasximenes30.libraryapi.repository.specs.LivroSpecs.no
 public class LivroService {
 
     private final LivroRepository livroRepository;
+    private final LivroValidator validator;
 
     public Livro salvar(Livro livro) {
+        validator.validar(livro);
         return livroRepository.save(livro);
     }
 
@@ -71,6 +74,7 @@ public class LivroService {
         if(livro.getId() == null){
             throw new IllegalArgumentException("O ID do livro não pode ser nulo para atualização.");
         }
+        validator.validar(livro);
         livroRepository.save(livro);
     }
 }
